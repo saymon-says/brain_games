@@ -8,8 +8,9 @@ public class Game {
     private static int flag = 0;
     private static final int LOOPS = 3;
     private static final int FACTOR = 100;
+    private static int resultCalc;
 
-    public static void getAnswer(String person) {
+    public static void getEvenNumber(String person) {
         System.out.println("Question: " + getRandomNumber());
         System.out.print("Your answer: ");
 
@@ -21,7 +22,7 @@ public class Game {
                 System.out.println("Correct!");
                 flag++;
                 if (flag < LOOPS) {
-                    getAnswer(person);
+                    getEvenNumber(person);
                 } else {
                     System.out.println("Congratulation! " + person);
                 }
@@ -39,7 +40,28 @@ public class Game {
         }
     }
 
-    public static int getRandomNumber() {
+    public static void getCalcAnswer(String person) {
+        System.out.println("Question: " + calcOutput());
+        System.out.print("Your answer: ");
+
+        Scanner scan = new Scanner(System.in);
+        int answer = scan.nextInt();
+
+        if (resultCalc == answer) {
+            System.out.println("Correct!");
+            flag++;
+            if (flag < LOOPS) {
+                getCalcAnswer(person);
+            } else {
+                System.out.println("Congratulation! " + person);
+            }
+        } else {
+            System.out.println(answer + " is wrong answer ;(. Correct answer was " + resultCalc + ".\n"
+                    + "Let's try again " + person + "!");
+        }
+    }
+
+    private static int getRandomNumber() {
         int randomNumber = (int) (Math.random() * FACTOR);
         evenNumber = randomNumber % 2 == 0;
         return randomNumber;
@@ -47,5 +69,32 @@ public class Game {
 
     private static boolean correctInput(String input) {
         return input.equals("yes") || input.equals("no");
+    }
+
+    private static String getRandomOperation() {
+        int numberOperation = (int) (Math.random() * LOOPS);
+
+        if (numberOperation == 0) {
+            return " + ";
+        } else if (numberOperation == 1) {
+            return " - ";
+        } else {
+            return " * ";
+        }
+    }
+
+    private static String calcOutput() {
+        int a = getRandomNumber();
+        int b = getRandomNumber();
+        String operation = getRandomOperation();
+
+        if (operation.equals(" + ")) {
+            resultCalc = a + b;
+        } else if (operation.equals(" - ")) {
+            resultCalc = a - b;
+        } else {
+            resultCalc = a * b;
+        }
+        return a + operation + b;
     }
 }
