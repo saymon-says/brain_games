@@ -7,10 +7,15 @@
 plugins {
     id 'com.github.ben-manes.versions' version '0.38.0'
     id 'application'
+    id 'checkstyle'
 }
 
 compileJava {
     options.release = 14
+}
+
+checkstyle {
+    toolVersion = '8.16'
 }
 
 repositories {
