@@ -14,10 +14,6 @@ compileJava {
     options.release = 14
 }
 
-checkstyle {
-    toolVersion = '8.16'
-}
-
 repositories {
     mavenCentral()
 }
@@ -29,5 +25,4 @@ run {
 group = 'hexlet.code'
 version = '1.0-SNAPSHOT'
 
-apply plugin: 'java'
 mainClassName = 'hexlet.code.App'
