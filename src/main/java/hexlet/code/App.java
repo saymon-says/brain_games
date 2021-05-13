@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class App {
 
-    public static String name;
+//    public static String name;
 
     public static void main(String[] args) {
         System.out.println("Please enter the game number end press Enter\n1 - Greet\n2 - Even\n3 - Exit");
@@ -18,11 +18,11 @@ public class App {
             System.out.println("Welcome To The Brain Games!");
             System.out.print("May I have your name? ");
 
-            name = Cli.getName();
+            String name = Cli.getName();
             System.out.println("Hello! " + name + "\n");
 
             System.out.println("Answer 'yes' if number even otherwise answer 'no'\n");
-            Game.getAnswer();
+            Game.getAnswer(name);
         } else {
             System.out.println("Goodbye!");
         }

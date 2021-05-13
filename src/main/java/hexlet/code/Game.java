@@ -10,7 +10,7 @@ public class Game {
     private static final int LOOPS = 3;
     private static final int FACTOR = 100;
 
-    public static void getAnswer() {
+    public static void getAnswer(String person) {
         System.out.println("Question: " + getRandomNumber());
         System.out.print("Your answer: ");
         Scanner scan = new Scanner(System.in);
@@ -20,29 +20,29 @@ public class Game {
                 System.out.println("Correct!");
                 flag++;
                 if (flag < LOOPS) {
-                    getAnswer();
+                    getAnswer(person);
                 } else {
-                    System.out.println("Congratulation! " + App.name);
+                    System.out.println("Congratulation! " + person);
                 }
             } else if (evenNumber && answer.equals("no")) {
 
                 System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'.\n"
-                        + "Let's try again " + App.name + "!");
+                        + "Let's try again " + person + "!");
             } else if (!evenNumber && answer.equals("yes")) {
                 System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'.\n"
-                        + "Let's try again " + App.name + "!");
+                        + "Let's try again " + person + "!");
             } else if (!evenNumber && answer.equals("no")) {
                 System.out.println("Correct!");
                 flag++;
                 if (flag < LOOPS) {
-                    getAnswer();
+                    getAnswer(person);
                 } else {
-                    System.out.println("Congratulation! " + App.name);
+                    System.out.println("Congratulation! " + person);
                 }
             }
         } else {
             System.out.println("'" + answer + "' is wrong answer ;(. \n"
-                    + "Let's try again " + App.name + "!");
+                    + "Let's try again " + person + "!");
         }
     }
 
