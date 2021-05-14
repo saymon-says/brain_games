@@ -61,7 +61,7 @@ public class Engine {
 
     public static void incorrectInput(String yourInput, String correctInput, String person) {
         System.out.println(yourInput + " is wrong answer ;(. Correct answer was " + correctInput + ".\n"
-                + "Let's try again " + person + "!");
+                + "Let's try again, " + person + "!");
     }
 
     public static String getRandomOperation() {
