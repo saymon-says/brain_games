@@ -43,7 +43,7 @@ public class PrimeGame {
     }
 
     private static boolean isPrime(final int number) {
-        if (number % 2 == 0) {
+        if (number != 2 && number % 2 == 0) {
             return false;
         }
 
