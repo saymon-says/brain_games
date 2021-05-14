@@ -47,6 +47,10 @@ public class PrimeGame {
             return false;
         }
 
+        if (number == 1) {
+            return true;
+        }
+
         int limit = (int) (RANGE_START + Math.sqrt(number));
         for (int i = LOOPS; i <= limit; i += 2) {
             if (number % i == 0) {
