@@ -3,13 +3,13 @@ package hexlet.code.game;
 import hexlet.code.Engine;
 
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class PrimeGame {
 
     private static boolean primeNumber;
     private static int flag = 0;
     private static final int LOOPS = 3;
+    private static final double RANGE_START = 0.1;
 
     public static String getAnswerPrimeGame() {
         int variable = Engine.getRandomNumber();
@@ -43,11 +43,16 @@ public class PrimeGame {
     }
 
     private static boolean isPrime(final int number) {
-        if (number == 1 || number == 2) {
-            return true;
+        if (number % 2 == 0) {
+            return false;
         }
-        return IntStream.rangeClosed(2, number / 2).noneMatch(i -> number % i == 0);
+
+        int limit = (int) (RANGE_START + Math.sqrt(number));
+        for (int i = LOOPS; i <= limit; i += 2) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
-
-
 }
