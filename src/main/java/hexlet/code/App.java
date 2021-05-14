@@ -18,7 +18,10 @@ public class App {
             System.out.println("Your choice - " + choice + "\n");
 
             switch (choice) {
-                case ("1") -> Engine.greeting();
+                case ("1") -> {
+                    Engine.greeting();
+                    Engine.getName();
+                }
                 case ("2") -> {
                     Engine.greeting();
                     Engine.getName();
