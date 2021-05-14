@@ -1,16 +1,13 @@
 package hexlet.code;
 
-import hexlet.code.Cli;
 import hexlet.code.game.CalcGame;
 import hexlet.code.game.EvenGame;
+import hexlet.code.game.GcdGame;
 
 public class Engine {
 
-    private static boolean evenNumber;
-    private static int flag = 0;
     private static final int LOOPS = 3;
     private static final int FACTOR = 100;
-    private static int resultCalc;
     private static String name;
 
     public static void greeting() {
@@ -35,6 +32,11 @@ public class Engine {
     public static void startCalcGame() {
         int answer = CalcGame.getAnswerCalcGame();
         CalcGame.checkAnswerCalcGame(answer, name);
+    }
+
+    public static void startGcdGame() {
+        int answer = GcdGame.getAnswerGcdGame();
+        GcdGame.checkAnswerGcdGame(answer, name);
     }
 
     public static int getRandomNumber() {

@@ -8,7 +8,7 @@ public class App {
     public static void main(String[] args) {
 
         System.out.println("Please enter the game number end press Enter\n1 - Greet\n"
-                + "2 - Even\n3 - Calc\n4 - Exit");
+                + "2 - Even\n3 - Calc\n4 - GCD\n5 - Exit");
 
         Scanner scan = new Scanner(System.in);
         String choice = scan.next();
@@ -28,6 +28,12 @@ public class App {
                 Engine.getName();
                 System.out.println("What is the result of the expression?\n");
                 Engine.startCalcGame();
+            }
+            case ("4") -> {
+                Engine.greeting();
+                Engine.getName();
+                System.out.println("Find the greatest common divisor of given numbers.\n");
+                Engine.startGcdGame();
             }
             default -> System.out.println("Goodbye my friend's!");
         }
