@@ -2,6 +2,7 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class GcdGame {
@@ -37,16 +38,8 @@ public class GcdGame {
     }
 
     private static int findGcd(int a, int b) {
-        if (a == 0) {
-            return b;
-        }
-        while (b != 0) {
-            if (a > b) {
-                a = a - b;
-            } else {
-                b = b - a;
-            }
-        }
-        return a;
+        BigInteger c = BigInteger.valueOf(a);
+        BigInteger d = BigInteger.valueOf(b);
+        return (c.gcd(d)).intValue();
     }
 }

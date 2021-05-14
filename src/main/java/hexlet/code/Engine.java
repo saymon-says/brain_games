@@ -1,8 +1,9 @@
 package hexlet.code;
 
-import hexlet.code.game.CalcGame;
-import hexlet.code.game.EvenGame;
+import hexlet.code.game.PrimeGame;
 import hexlet.code.game.GcdGame;
+import hexlet.code.game.EvenGame;
+import hexlet.code.game.CalcGame;
 import hexlet.code.game.ProgressionGame;
 
 public class Engine {
@@ -45,6 +46,11 @@ public class Engine {
         ProgressionGame.checkAnswerProgressionGame(answer, name);
     }
 
+    public static void startPrimeGame() {
+        String answer = PrimeGame.getAnswerPrimeGame();
+        PrimeGame.checkAnswerPrimeGame(answer, name);
+    }
+
     public static int getRandomNumber() {
         return (int) (1 + Math.random() * FACTOR);
     }
@@ -68,5 +74,9 @@ public class Engine {
         } else {
             return " * ";
         }
+    }
+
+    public static String causeMessage() {
+        return "Your input fail!";
     }
 }
