@@ -23,7 +23,7 @@ public class Engine {
     public static void getName() {
         System.out.print("May I have your name? ");
         name = Cli.getName();
-        System.out.println("Hello! " + name + "\n");
+        System.out.println("Hello! " + name + "!\n");
     }
 
     public static void startEvenGame() {
