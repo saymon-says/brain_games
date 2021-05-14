@@ -43,7 +43,7 @@ public class PrimeGame {
     }
 
     private static boolean isPrime(final int number) {
-        return IntStream.rangeClosed(2, number / 2).noneMatch(i -> number % i == 0);
+        return IntStream.rangeClosed(1, number / 2).noneMatch(i -> number % i == 0);
     }
 
 
