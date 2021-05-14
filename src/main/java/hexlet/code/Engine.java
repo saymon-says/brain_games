@@ -3,11 +3,12 @@ package hexlet.code;
 import hexlet.code.game.CalcGame;
 import hexlet.code.game.EvenGame;
 import hexlet.code.game.GcdGame;
+import hexlet.code.game.ProgressionGame;
 
 public class Engine {
 
     private static final int LOOPS = 3;
-    private static final int FACTOR = 100;
+    private static final int FACTOR = 10;
     private static String name;
 
     public static void greeting() {
@@ -39,8 +40,13 @@ public class Engine {
         GcdGame.checkAnswerGcdGame(answer, name);
     }
 
+    public static void startProgressiveGame() {
+        int answer = ProgressionGame.getAnswerProgressionGame();
+        ProgressionGame.checkAnswerProgressionGame(answer, name);
+    }
+
     public static int getRandomNumber() {
-        return (int) (Math.random() * FACTOR);
+        return (int) (1 + Math.random() * FACTOR);
     }
 
     public static boolean correctInput(String input) {
