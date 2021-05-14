@@ -17,7 +17,7 @@ public class Engine {
     }
 
     public static void congratulation(String person) {
-        System.out.println("Congratulation, " + person + "!");
+        System.out.println("Congratulations, " + person + "!");
     }
 
     public static void getName() {
