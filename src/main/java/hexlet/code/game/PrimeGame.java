@@ -48,7 +48,7 @@ public class PrimeGame {
         }
 
         if (number == 1) {
-            return true;
+            return false;
         }
 
         int limit = (int) (RANGE_START + Math.sqrt(number));
