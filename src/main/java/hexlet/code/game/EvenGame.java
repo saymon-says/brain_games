@@ -19,7 +19,7 @@ public class EvenGame {
     }
 
     public static boolean checkAnswerEvenGame(String answer, String person) {
-        if (isEvenNumber && answer.equals("yes") || (!isEvenNumber && answer.equals("no"))) {
+        if (isCheckAnswerEvenGame(answer)) {
             return true;
         }
         if (isEvenNumber && answer.equals("no")) {
@@ -39,5 +39,9 @@ public class EvenGame {
                     + "Let's try again " + person + "!");
             return false;
         }
+    }
+
+    private static boolean isCheckAnswerEvenGame(String answer) {
+        return isEvenNumber && answer.equals("yes") || !isEvenNumber && answer.equals("no");
     }
 }

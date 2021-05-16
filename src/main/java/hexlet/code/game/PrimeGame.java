@@ -22,7 +22,7 @@ public class PrimeGame {
 
     public static boolean checkAnswerPrimeGame(String answer, String person) {
 
-        if (primeNumber && answer.equals("yes") || (!primeNumber && answer.equals("no"))) {
+        if (isCheckAnswerPrimeGame(answer)) {
             return true;
         }
         if (primeNumber && answer.equals("no")) {
@@ -60,5 +60,9 @@ public class PrimeGame {
                     + "Let's try again " + person + "!");
             return false;
         }
+    }
+
+    private static boolean isCheckAnswerPrimeGame(String answer) {
+        return primeNumber && answer.equals("yes") || !primeNumber && answer.equals("no");
     }
 }
