@@ -4,12 +4,9 @@ import hexlet.code.Engine;
 
 import java.util.Scanner;
 
-import static hexlet.code.Engine.LOOPS;
-
 public class EvenGame {
 
     private static boolean isEvenNumber;
-    private static int i = 0;
 
     public static String getAnswerEvenGame() {
         int number = Engine.getRandomNumber();
@@ -21,14 +18,17 @@ public class EvenGame {
         return scan.next();
     }
 
-    public static void checkAnswerEvenGame(String answer, String person) {
+    public static boolean checkAnswerEvenGame(String answer, String person) {
         if (isEvenNumber && answer.equals("yes") || (!isEvenNumber && answer.equals("no"))) {
-            System.out.println("Correct!");
-        } else if (isEvenNumber && answer.equals("no")) {
+            return true;
+        }
+        if (isEvenNumber && answer.equals("no")) {
             Engine.incorrectInput(answer, "yes", person);
-        } else if (!isEvenNumber && answer.equals("yes")) {
+        }
+        if (!isEvenNumber && answer.equals("yes")) {
             Engine.incorrectInput(answer, "no", person);
         }
+        return false;
     }
 
     public static boolean checkInputEvenGame(String answer, String person) {

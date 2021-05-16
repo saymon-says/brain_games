@@ -8,7 +8,7 @@ import hexlet.code.game.ProgressionGame;
 
 public class Engine {
 
-    public static final int LOOPS = 3;
+    private static final int LOOPS = 3;
     public static final int FACTOR = 10;
     private static String name;
 
@@ -27,13 +27,15 @@ public class Engine {
     }
 
     public static void startEvenGame() {
-        String answer = EvenGame.getAnswerEvenGame();
-        if (EvenGame.checkInputEvenGame(answer, name)) {
-            for (int i = 1; i < LOOPS; i++) {
-                String answerCycle = EvenGame.getAnswerEvenGame();
-                EvenGame.checkAnswerEvenGame(answerCycle, name);
-            } congratulation(name);
+        for (int i = 0; i < LOOPS; i++) {
+            String answer = EvenGame.getAnswerEvenGame();
+            if (!EvenGame.checkInputEvenGame(answer, name)
+                    || !EvenGame.checkAnswerEvenGame(answer, name)) {
+                return;
+            }
+            System.out.println("Correct!");
         }
+        congratulation(name);
     }
 
     public static void startCalcGame() {
