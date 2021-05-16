@@ -4,15 +4,16 @@ import hexlet.code.Engine;
 
 import java.util.Scanner;
 
+import static hexlet.code.Engine.LOOPS;
+
 public class EvenGame {
 
-    private static boolean evenNumber;
-    private static int flag = 0;
-    private static final int LOOPS = 3;
+    private static boolean isEvenNumber;
+    private static int i = 0;
 
     public static String getAnswerEvenGame() {
         int number = Engine.getRandomNumber();
-        evenNumber = number % 2 == 0;
+        isEvenNumber = number % 2 == 0;
         System.out.println("Question: " + number);
         System.out.print("Your answer: ");
 
@@ -21,23 +22,22 @@ public class EvenGame {
     }
 
     public static void checkAnswerEvenGame(String answer, String person) {
+        if (isEvenNumber && answer.equals("yes") || (!isEvenNumber && answer.equals("no"))) {
+            System.out.println("Correct!");
+        } else if (isEvenNumber && answer.equals("no")) {
+            Engine.incorrectInput(answer, "yes", person);
+        } else if (!isEvenNumber && answer.equals("yes")) {
+            Engine.incorrectInput(answer, "no", person);
+        }
+    }
+
+    public static boolean checkInputEvenGame(String answer, String person) {
         if (Engine.correctInput(answer)) {
-            if (evenNumber && answer.equals("yes") || (!evenNumber && answer.equals("no"))) {
-                System.out.println("Correct!");
-                flag++;
-                if (flag < LOOPS) {
-                    checkAnswerEvenGame(getAnswerEvenGame(), person);
-                } else {
-                    Engine.congratulation(person);
-                }
-            } else if (evenNumber && answer.equals("no")) {
-                Engine.incorrectInput(answer, "yes", person);
-            } else if (!evenNumber && answer.equals("yes")) {
-                Engine.incorrectInput(answer, "no", person);
-            }
+            return true;
         } else {
             System.out.println("'" + answer + "' is wrong answer ;(. \n"
                     + "Let's try again " + person + "!");
+            return false;
         }
     }
 }

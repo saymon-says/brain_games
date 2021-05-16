@@ -8,8 +8,8 @@ import hexlet.code.game.ProgressionGame;
 
 public class Engine {
 
-    private static final int LOOPS = 3;
-    private static final int FACTOR = 10;
+    public static final int LOOPS = 3;
+    public static final int FACTOR = 10;
     private static String name;
 
     public static void greeting() {
@@ -28,7 +28,12 @@ public class Engine {
 
     public static void startEvenGame() {
         String answer = EvenGame.getAnswerEvenGame();
-        EvenGame.checkAnswerEvenGame(answer, name);
+        if (EvenGame.checkInputEvenGame(answer, name)) {
+            for (int i = 1; i < LOOPS; i++) {
+                String answerCycle = EvenGame.getAnswerEvenGame();
+                EvenGame.checkAnswerEvenGame(answerCycle, name);
+            } congratulation(name);
+        }
     }
 
     public static void startCalcGame() {
