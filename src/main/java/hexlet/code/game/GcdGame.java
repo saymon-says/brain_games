@@ -7,8 +7,6 @@ import java.util.Scanner;
 
 public class GcdGame {
 
-    private static int flag = 0;
-    private static final int LOOPS = 3;
     private static int firstNumber;
     private static int secondNumber;
 
@@ -22,18 +20,13 @@ public class GcdGame {
         return scan.nextInt();
     }
 
-    public static void checkAnswerGcdGame(int answer, String person) {
+    public static boolean checkAnswerGcdGame(int answer, String person) {
         int resultGcd = findGcd(firstNumber, secondNumber);
         if (answer == resultGcd) {
-            System.out.println("Correct!");
-            flag++;
-            if (flag < LOOPS) {
-                checkAnswerGcdGame(getAnswerGcdGame(), person);
-            } else {
-                Engine.congratulation(person);
-            }
+            return true;
         } else {
             Engine.incorrectInput("" + answer, "" + resultGcd, person);
+            return false;
         }
     }
 

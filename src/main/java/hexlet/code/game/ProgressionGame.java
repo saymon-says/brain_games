@@ -6,10 +6,8 @@ import java.util.Scanner;
 
 public class ProgressionGame {
 
-    private static final int LOOPS = 3;
-    private static int flag;
-    private static int temp;
-    private static int shadowTemp;
+    private static int tempProgressionElement;
+    private static int shadowTempProgressionElement;
     private static final int COUNT_STEP = 10;
 
 
@@ -17,7 +15,7 @@ public class ProgressionGame {
         int firstNumber = Engine.getRandomNumber();
         int progressionStep = Engine.getRandomNumber();
         int shadowNumber = Engine.getRandomNumber();
-        temp = firstNumber;
+        tempProgressionElement = firstNumber;
 
         System.out.println("Question: "
                 + getProgressionLane(firstNumber, progressionStep, shadowNumber));
@@ -27,33 +25,29 @@ public class ProgressionGame {
         return scan.nextInt();
     }
 
-    public static void checkAnswerProgressionGame(int answer, String person) {
-        if (shadowTemp == answer) {
-            System.out.println("Correct!");
-            flag++;
-            if (flag < LOOPS) {
-                checkAnswerProgressionGame(getAnswerProgressionGame(), person);
-            } else {
-                Engine.congratulation(person);
-            }
+    public static boolean checkAnswerProgressionGame(int answer, String person) {
+        if (shadowTempProgressionElement == answer) {
+            return true;
         } else {
-            Engine.incorrectInput("" + answer, "" + shadowTemp, person);
+            Engine.incorrectInput("" + answer, ""
+                    + shadowTempProgressionElement, person);
+            return false;
         }
     }
 
     public static String getProgressionLane(int start, int step, int shadow) {
-        temp = start;
+        tempProgressionElement = start;
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= COUNT_STEP; i++) {
             if (i == shadow) {
-                shadowTemp = temp;
-                temp = temp + step;
+                shadowTempProgressionElement = tempProgressionElement;
+                tempProgressionElement = tempProgressionElement + step;
                 sb.append("..");
                 sb.append(" ");
             } else {
-                sb.append(temp);
+                sb.append(tempProgressionElement);
                 sb.append(" ");
-                temp = temp + step;
+                tempProgressionElement = tempProgressionElement + step;
             }
         }
         return sb.toString();

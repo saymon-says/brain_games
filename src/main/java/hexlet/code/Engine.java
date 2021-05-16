@@ -39,23 +39,48 @@ public class Engine {
     }
 
     public static void startCalcGame() {
-        int answer = CalcGame.getAnswerCalcGame();
-        CalcGame.checkAnswerCalcGame(answer, name);
+        for (int i = 0; i < LOOPS; i++) {
+            int answer = CalcGame.getAnswerCalcGame();
+            if (!CalcGame.checkAnswerCalcGame(answer, name)) {
+                return;
+            }
+            System.out.println("Correct!");
+        }
+        congratulation(name);
     }
 
     public static void startGcdGame() {
-        int answer = GcdGame.getAnswerGcdGame();
-        GcdGame.checkAnswerGcdGame(answer, name);
+        for (int i = 0; i < LOOPS; i++) {
+            int answer = GcdGame.getAnswerGcdGame();
+            if (!GcdGame.checkAnswerGcdGame(answer, name)) {
+                return;
+            }
+            System.out.println("Correct!");
+        }
+        congratulation(name);
     }
 
     public static void startProgressiveGame() {
-        int answer = ProgressionGame.getAnswerProgressionGame();
-        ProgressionGame.checkAnswerProgressionGame(answer, name);
+        for (int i = 0; i < LOOPS; i++) {
+            int answer = ProgressionGame.getAnswerProgressionGame();
+            if (!ProgressionGame.checkAnswerProgressionGame(answer, name)) {
+                return;
+            }
+            System.out.println("Correct!");
+        }
+        congratulation(name);
     }
 
     public static void startPrimeGame() {
-        String answer = PrimeGame.getAnswerPrimeGame();
-        PrimeGame.checkAnswerPrimeGame(answer, name);
+        for (int i = 0; i < LOOPS; i++) {
+            String answer = PrimeGame.getAnswerPrimeGame();
+            if (!PrimeGame.checkAnswerPrimeGame(answer, name)
+                    || !PrimeGame.checkInputPrimeGame(answer, name)) {
+                return;
+            }
+            System.out.println("Correct!");
+        }
+        congratulation(name);
     }
 
     public static int getRandomNumber() {

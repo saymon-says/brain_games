@@ -7,8 +7,7 @@ import java.util.Scanner;
 public class PrimeGame {
 
     private static boolean primeNumber;
-    private static int flag = 0;
-    private static final int LOOPS = 3;
+    private static final int CYCLE_IS_PRIME = 3;
     private static final double RANGE_START = 0.1;
 
     public static String getAnswerPrimeGame() {
@@ -21,25 +20,18 @@ public class PrimeGame {
         return scan.next();
     }
 
-    public static void checkAnswerPrimeGame(String answer, String person) {
-        if (Engine.correctInput(answer)) {
-            if (primeNumber && answer.equals("yes") || (!primeNumber && answer.equals("no"))) {
-                System.out.println("Correct!");
-                flag++;
-                if (flag < LOOPS) {
-                    checkAnswerPrimeGame(getAnswerPrimeGame(), person);
-                } else {
-                    Engine.congratulation(person);
-                }
-            } else if (primeNumber && answer.equals("no")) {
-                Engine.incorrectInput(answer, "yes", person);
-            } else if (!primeNumber && answer.equals("yes")) {
-                Engine.incorrectInput(answer, "no", person);
-            }
-        } else {
-            System.out.println("'" + answer + "' is wrong answer ;(. \n"
-                    + "Let's try again " + person + "!");
+    public static boolean checkAnswerPrimeGame(String answer, String person) {
+
+        if (primeNumber && answer.equals("yes") || (!primeNumber && answer.equals("no"))) {
+            return true;
         }
+        if (primeNumber && answer.equals("no")) {
+            Engine.incorrectInput(answer, "yes", person);
+        }
+        if (!primeNumber && answer.equals("yes")) {
+            Engine.incorrectInput(answer, "no", person);
+        }
+        return false;
     }
 
     private static boolean isPrime(final int number) {
@@ -52,7 +44,7 @@ public class PrimeGame {
         }
 
         int limit = (int) (RANGE_START + Math.sqrt(number));
-        for (int i = LOOPS; i <= limit; i += 2) {
+        for (int i = CYCLE_IS_PRIME; i <= limit; i += 2) {
             if (number % i == 0) {
                 return false;
             }
@@ -60,4 +52,13 @@ public class PrimeGame {
         return true;
     }
 
+    public static boolean checkInputPrimeGame(String answer, String person) {
+        if (Engine.correctInput(answer)) {
+            return true;
+        } else {
+            System.out.println("'" + answer + "' is wrong answer ;(. \n"
+                    + "Let's try again " + person + "!");
+            return false;
+        }
+    }
 }

@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class CalcGame {
 
-    private static int flag = 0;
-    private static final int LOOPS = 3;
     private static int resultCalc;
 
     public static int getAnswerCalcGame() {
@@ -18,17 +16,12 @@ public class CalcGame {
         return scan.nextInt();
     }
 
-    public static void checkAnswerCalcGame(int answer, String person) {
+    public static boolean checkAnswerCalcGame(int answer, String person) {
         if (resultCalc == answer) {
-            System.out.println("Correct!");
-            flag++;
-            if (flag < LOOPS) {
-                checkAnswerCalcGame(getAnswerCalcGame(), person);
-            } else {
-                Engine.congratulation(person);
-            }
+            return true;
         } else {
             Engine.incorrectInput("" + answer, "" + resultCalc, person);
+            return false;
         }
     }
 
