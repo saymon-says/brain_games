@@ -65,4 +65,8 @@ public class PrimeGame {
     private static boolean isCheckAnswerPrimeGame(String answer) {
         return primeNumber && answer.equals("yes") || !primeNumber && answer.equals("no");
     }
+
+    public static void gameRules() {
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.\n");
+    }
 }

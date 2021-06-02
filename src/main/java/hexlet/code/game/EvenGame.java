@@ -8,6 +8,9 @@ public class EvenGame {
 
     private static boolean isEvenNumber;
 
+    public static void gameRules() {
+        System.out.println("Answer 'yes' if number even otherwise answer 'no'\n");
+    }
     public static String getAnswerEvenGame() {
         int number = Engine.getRandomNumber();
         isEvenNumber = number % 2 == 0;

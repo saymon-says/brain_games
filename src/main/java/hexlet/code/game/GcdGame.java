@@ -35,4 +35,8 @@ public class GcdGame {
         BigInteger d = BigInteger.valueOf(b);
         return (c.gcd(d)).intValue();
     }
+
+    public static void gameRules() {
+        System.out.println("Find the greatest common divisor of given numbers.\n");
+    }
 }

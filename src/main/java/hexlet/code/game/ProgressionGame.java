@@ -54,4 +54,7 @@ public class ProgressionGame {
     }
 
 
+    public static void gameRules() {
+        System.out.println("What number is missing in the progression?\n");
+    }
 }

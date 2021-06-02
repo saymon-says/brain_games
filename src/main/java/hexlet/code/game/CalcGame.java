@@ -8,6 +8,10 @@ public class CalcGame {
 
     private static int resultCalc;
 
+    public static void gameRules() {
+        System.out.println("What is the result of the expression?\n");
+    }
+
     public static int getAnswerCalcGame() {
         System.out.println("Question: " + calcOutput());
         System.out.print("Your answer: ");

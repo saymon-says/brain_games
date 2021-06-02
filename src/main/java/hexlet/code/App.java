@@ -18,37 +18,21 @@ public class App {
 
             switch (choice) {
                 case ("1") -> {
-                    Engine.greeting();
-                    Engine.getName();
+                    Engine.outputGreetingAndGetName();
                 }
                 case ("2") -> {
-                    Engine.greeting();
-                    Engine.getName();
-                    System.out.println("Answer 'yes' if number even otherwise answer 'no'\n");
                     Engine.startEvenGame();
                 }
                 case ("3") -> {
-                    Engine.greeting();
-                    Engine.getName();
-                    System.out.println("What is the result of the expression?\n");
                     Engine.startCalcGame();
                 }
                 case ("4") -> {
-                    Engine.greeting();
-                    Engine.getName();
-                    System.out.println("Find the greatest common divisor of given numbers.\n");
                     Engine.startGcdGame();
                 }
                 case ("5") -> {
-                    Engine.greeting();
-                    Engine.getName();
-                    System.out.println("What number is missing in the progression?\n");
                     Engine.startProgressiveGame();
                 }
                 case ("6") -> {
-                    Engine.greeting();
-                    Engine.getName();
-                    System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.\n");
                     Engine.startPrimeGame();
                 }
                 default -> System.out.println("Goodbye my friend's!");

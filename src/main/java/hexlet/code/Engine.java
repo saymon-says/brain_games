@@ -1,16 +1,23 @@
 package hexlet.code;
 
-import hexlet.code.game.PrimeGame;
-import hexlet.code.game.GcdGame;
-import hexlet.code.game.EvenGame;
 import hexlet.code.game.CalcGame;
+import hexlet.code.game.EvenGame;
+import hexlet.code.game.GcdGame;
+import hexlet.code.game.PrimeGame;
 import hexlet.code.game.ProgressionGame;
+
+import java.util.Random;
 
 public class Engine {
 
     private static final int LOOPS = 3;
-    public static final int FACTOR = 10;
+    private static final int FACTOR = 10;
     private static String name;
+
+    public static void outputGreetingAndGetName() {
+        greeting();
+        getName();
+    }
 
     public static void greeting() {
         System.out.println("Welcome To The Brain Games!");
@@ -27,6 +34,8 @@ public class Engine {
     }
 
     public static void startEvenGame() {
+        outputGreetingAndGetName();
+        EvenGame.gameRules();
         for (int i = 0; i < LOOPS; i++) {
             String answer = EvenGame.getAnswerEvenGame();
             if (!EvenGame.checkInputEvenGame(answer, name)
@@ -39,6 +48,8 @@ public class Engine {
     }
 
     public static void startCalcGame() {
+        outputGreetingAndGetName();
+        CalcGame.gameRules();
         for (int i = 0; i < LOOPS; i++) {
             int answer = CalcGame.getAnswerCalcGame();
             if (!CalcGame.checkAnswerCalcGame(answer, name)) {
@@ -50,6 +61,8 @@ public class Engine {
     }
 
     public static void startGcdGame() {
+        outputGreetingAndGetName();
+        GcdGame.gameRules();
         for (int i = 0; i < LOOPS; i++) {
             int answer = GcdGame.getAnswerGcdGame();
             if (!GcdGame.checkAnswerGcdGame(answer, name)) {
@@ -61,6 +74,8 @@ public class Engine {
     }
 
     public static void startProgressiveGame() {
+        outputGreetingAndGetName();
+        ProgressionGame.gameRules();
         for (int i = 0; i < LOOPS; i++) {
             int answer = ProgressionGame.getAnswerProgressionGame();
             if (!ProgressionGame.checkAnswerProgressionGame(answer, name)) {
@@ -72,6 +87,8 @@ public class Engine {
     }
 
     public static void startPrimeGame() {
+        outputGreetingAndGetName();
+        PrimeGame.gameRules();
         for (int i = 0; i < LOOPS; i++) {
             String answer = PrimeGame.getAnswerPrimeGame();
             if (!PrimeGame.checkAnswerPrimeGame(answer, name)
@@ -84,7 +101,8 @@ public class Engine {
     }
 
     public static int getRandomNumber() {
-        return (int) (1 + Math.random() * FACTOR);
+        Random random = new Random();
+        return random.nextInt(FACTOR + 1);
     }
 
     public static boolean correctInput(String input) {
@@ -92,8 +110,9 @@ public class Engine {
     }
 
     public static void incorrectInput(String yourInput, String correctInput, String person) {
-        System.out.println(yourInput + " is wrong answer ;(. Correct answer was " + correctInput + ".\n"
-                + "Let's try again, " + person + "!");
+        String out = String.format("%s is wrong answer ;(. Correct answer was %s.\n"
+                + "Let's try again, %s!", yourInput, correctInput, person);
+        System.out.println(out);
     }
 
     public static String getRandomOperation() {
