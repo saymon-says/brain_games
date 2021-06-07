@@ -2,16 +2,16 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
-import static hexlet.code.Engine.*;
+import static hexlet.code.Engine.LOOPS;
 
 public class CalcGame {
 
     private static int resultCalc;
 
     public static void startCalcGame() {
-        outputStartInfoGame();
-        outputGameCalcRules();
-        calcGameLoops(name);
+        Engine.outputStartInfoGame();
+        Engine.outputGameCalcRules();
+        calcGameLoops(Engine.getName());
     }
 
     private static String calcOutput() {

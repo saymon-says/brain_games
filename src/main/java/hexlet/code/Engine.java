@@ -1,10 +1,5 @@
 package hexlet.code;
 
-import hexlet.code.game.CalcGame;
-import hexlet.code.game.GcdGame;
-import hexlet.code.game.PrimeGame;
-import hexlet.code.game.ProgressionGame;
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -12,7 +7,7 @@ public class Engine {
 
     public static final int LOOPS = 3;
     private static final int FACTOR = 10;
-    public static String name;
+    private static String name;
 
     /*
     Output data
@@ -110,6 +105,10 @@ public class Engine {
     /*
     Engine Game Process
      */
+
+    public static String getName() {
+        return name;
+    }
 
     public static boolean isCorrectInput(final String input) {
         return input.equals("yes") || input.equals("no");

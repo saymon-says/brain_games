@@ -2,14 +2,15 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
-import static hexlet.code.Engine.*;
+import static hexlet.code.Engine.LOOPS;
+
 
 public class EvenGame {
 
     public static void startEvenGame() {
-        outputStartInfoGame();
-        outputGameEvenRules();
-        evenGameLoops(name);
+        Engine.outputStartInfoGame();
+        Engine.outputGameEvenRules();
+        evenGameLoops(Engine.getName());
     }
 
     public static void evenGameLoops(final String person) {

@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 
 import java.math.BigInteger;
 
-import static hexlet.code.Engine.*;
+import static hexlet.code.Engine.LOOPS;
 
 public class GcdGame {
 
@@ -12,9 +12,9 @@ public class GcdGame {
     private static int secondNumber;
 
     public static void startGcdGame() {
-        outputStartInfoGame();
-        outputGameGcdRules();
-        GcdGame.gcdGameLoops(name);
+        Engine.outputStartInfoGame();
+        Engine.outputGameGcdRules();
+        GcdGame.gcdGameLoops(Engine.getName());
     }
 
     private static String getSetDigits() {

@@ -2,7 +2,7 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
-import static hexlet.code.Engine.*;
+import static hexlet.code.Engine.LOOPS;
 
 public class PrimeGame {
 
@@ -11,9 +11,9 @@ public class PrimeGame {
     private static final int STEP_DIVIDER = 6;
 
     public static void startPrimeGame() {
-        outputStartInfoGame();
-        outputGamePrimeRules();
-        PrimeGame.primeGameLoops(name);
+        Engine.outputStartInfoGame();
+        Engine.outputGamePrimeRules();
+        PrimeGame.primeGameLoops(Engine.getName());
     }
 
     private static boolean isPrime(final int number) {

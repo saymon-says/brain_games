@@ -2,7 +2,7 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
-import static hexlet.code.Engine.*;
+import static hexlet.code.Engine.LOOPS;
 
 public class ProgressionGame {
 
@@ -10,9 +10,9 @@ public class ProgressionGame {
     private static final int COUNT_STEP = 10;
 
     public static void startProgressiveGame() {
-        outputStartInfoGame();
-        outputGameProgressiveRules();
-        ProgressionGame.progressionGameLoops(name);
+        Engine.outputStartInfoGame();
+        Engine.outputGameProgressiveRules();
+        ProgressionGame.progressionGameLoops(Engine.getName());
     }
 
     public static String getProgressionLane() {
