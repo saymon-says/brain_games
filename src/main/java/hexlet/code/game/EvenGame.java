@@ -2,49 +2,26 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
-import java.util.Scanner;
+import static hexlet.code.Engine.LOOPS;
 
 public class EvenGame {
 
-    private static boolean isEvenNumber;
-
-    public static void gameRules() {
-        System.out.println("Answer 'yes' if number even otherwise answer 'no'\n");
-    }
-    public static String getAnswerEvenGame() {
-        int number = Engine.getRandomNumber();
-        isEvenNumber = number % 2 == 0;
-        System.out.println("Question: " + number);
-        System.out.print("Your answer: ");
-
-        Scanner scan = new Scanner(System.in);
-        return scan.next();
-    }
-
-    public static boolean checkAnswerEvenGame(String answer, String person) {
-        if (isCheckAnswerEvenGame(answer)) {
-            return true;
+    public static void evenGameLoops(final String person) {
+        for (int i = 0; i < LOOPS; i++) {
+            int number = Engine.getRandomNumber();
+            boolean isEvenNumber = isNumberEven(number);
+            String answer = Engine.getStringAnswer(String.valueOf(number));
+            if (Engine.isCheckInput(answer, person)
+                    || Engine.isCheckStringAnswer(isEvenNumber, answer, person)) {
+                return;
+            }
+            Engine.outputIfAnswerCorrect();
         }
-        if (isEvenNumber && answer.equals("no")) {
-            Engine.incorrectInput(answer, "yes", person);
-        }
-        if (!isEvenNumber && answer.equals("yes")) {
-            Engine.incorrectInput(answer, "no", person);
-        }
-        return false;
+        Engine.outputTextCongratulation(person);
+//        Engine.loops(isNumberEven(Engine.getRandomNumber()), person);
     }
 
-    public static boolean checkInputEvenGame(String answer, String person) {
-        if (Engine.correctInput(answer)) {
-            return true;
-        } else {
-            System.out.println("'" + answer + "' is wrong answer ;(. \n"
-                    + "Let's try again " + person + "!");
-            return false;
-        }
-    }
-
-    private static boolean isCheckAnswerEvenGame(String answer) {
-        return isEvenNumber && answer.equals("yes") || !isEvenNumber && answer.equals("no");
+    private static boolean isNumberEven(final int number) {
+        return number % 2 == 0;
     }
 }

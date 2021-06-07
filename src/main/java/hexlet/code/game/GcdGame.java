@@ -3,40 +3,34 @@ package hexlet.code.game;
 import hexlet.code.Engine;
 
 import java.math.BigInteger;
-import java.util.Scanner;
+
+import static hexlet.code.Engine.LOOPS;
 
 public class GcdGame {
 
     private static int firstNumber;
     private static int secondNumber;
 
-    public static int getAnswerGcdGame() {
+    private static String getSetDigits() {
         firstNumber = Engine.getRandomNumber();
         secondNumber = Engine.getRandomNumber();
-        System.out.println("Question: " + firstNumber + " " + secondNumber);
-        System.out.print("Your answer: ");
-
-        Scanner scan = new Scanner(System.in);
-        return scan.nextInt();
+        return String.format("%d %d", firstNumber, secondNumber);
     }
 
-    public static boolean checkAnswerGcdGame(int answer, String person) {
-        int resultGcd = findGcd(firstNumber, secondNumber);
-        if (answer == resultGcd) {
-            return true;
-        } else {
-            Engine.incorrectInput("" + answer, "" + resultGcd, person);
-            return false;
-        }
-    }
-
-    private static int findGcd(int a, int b) {
+    private static int findGcd(final int a, final int b) {
         BigInteger c = BigInteger.valueOf(a);
         BigInteger d = BigInteger.valueOf(b);
         return (c.gcd(d)).intValue();
     }
 
-    public static void gameRules() {
-        System.out.println("Find the greatest common divisor of given numbers.\n");
+    public static void gcdGameLoops(final String person) {
+        for (int i = 0; i < LOOPS; i++) {
+            int answer = Engine.getIntAnswer(getSetDigits());
+            if (Engine.isCheckIntegerAnswer(findGcd(firstNumber, secondNumber), answer, person)) {
+                return;
+            }
+            Engine.outputIfAnswerCorrect();
+        }
+        Engine.outputTextCongratulation(person);
     }
 }

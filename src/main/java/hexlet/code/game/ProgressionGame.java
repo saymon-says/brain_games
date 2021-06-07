@@ -2,59 +2,43 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
-import java.util.Scanner;
+import static hexlet.code.Engine.LOOPS;
 
 public class ProgressionGame {
 
-    private static int tempProgressionElement;
     private static int shadowTempProgressionElement;
     private static final int COUNT_STEP = 10;
 
-
-    public static int getAnswerProgressionGame() {
+    public static String getProgressionLane() {
         int firstNumber = Engine.getRandomNumber();
         int progressionStep = Engine.getRandomNumber();
         int shadowNumber = Engine.getRandomNumber();
-        tempProgressionElement = firstNumber;
+        int tempProgressionElement = firstNumber;
 
-        System.out.println("Question: "
-                + getProgressionLane(firstNumber, progressionStep, shadowNumber));
-        System.out.print("Your answer: ");
-
-        Scanner scan = new Scanner(System.in);
-        return scan.nextInt();
-    }
-
-    public static boolean checkAnswerProgressionGame(int answer, String person) {
-        if (shadowTempProgressionElement == answer) {
-            return true;
-        } else {
-            Engine.incorrectInput("" + answer, ""
-                    + shadowTempProgressionElement, person);
-            return false;
-        }
-    }
-
-    public static String getProgressionLane(int start, int step, int shadow) {
-        tempProgressionElement = start;
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= COUNT_STEP; i++) {
-            if (i == shadow) {
+            if (i == shadowNumber) {
                 shadowTempProgressionElement = tempProgressionElement;
-                tempProgressionElement = tempProgressionElement + step;
+                tempProgressionElement = tempProgressionElement + progressionStep;
                 sb.append("..");
                 sb.append(" ");
             } else {
                 sb.append(tempProgressionElement);
                 sb.append(" ");
-                tempProgressionElement = tempProgressionElement + step;
+                tempProgressionElement = tempProgressionElement + progressionStep;
             }
         }
         return sb.toString();
     }
 
-
-    public static void gameRules() {
-        System.out.println("What number is missing in the progression?\n");
+    public static void progressionGameLoops(final String person) {
+        for (int i = 0; i < LOOPS; i++) {
+            int answer = Engine.getIntAnswer(getProgressionLane());
+            if (Engine.isCheckIntegerAnswer(shadowTempProgressionElement, answer, person)) {
+                return;
+            }
+            Engine.outputIfAnswerCorrect();
+        }
+        Engine.outputTextCongratulation(person);
     }
 }

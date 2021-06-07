@@ -2,32 +2,11 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
-import java.util.Scanner;
+import static hexlet.code.Engine.LOOPS;
 
 public class CalcGame {
 
     private static int resultCalc;
-
-    public static void gameRules() {
-        System.out.println("What is the result of the expression?\n");
-    }
-
-    public static int getAnswerCalcGame() {
-        System.out.println("Question: " + calcOutput());
-        System.out.print("Your answer: ");
-
-        Scanner scan = new Scanner(System.in);
-        return scan.nextInt();
-    }
-
-    public static boolean checkAnswerCalcGame(int answer, String person) {
-        if (resultCalc == answer) {
-            return true;
-        } else {
-            Engine.incorrectInput("" + answer, "" + resultCalc, person);
-            return false;
-        }
-    }
 
     private static String calcOutput() {
         int a = Engine.getRandomNumber();
@@ -42,5 +21,16 @@ public class CalcGame {
             resultCalc = a * b;
         }
         return a + operation + b;
+    }
+
+    public static void calcGameLoops(final String person) {
+        for (int i = 0; i < LOOPS; i++) {
+            int answer = Engine.getIntAnswer(calcOutput());
+            if (Engine.isCheckIntegerAnswer(resultCalc, answer, person)) {
+                return;
+            }
+            Engine.outputIfAnswerCorrect();
+        }
+        Engine.outputTextCongratulation(person);
     }
 }
