@@ -84,7 +84,8 @@ public class Engine {
                 + "Let's try again, %s!\n", yourInput, correctInput, person);
     }
 
-    public static void outputTextWrongAnswer(final String answer, final String person) {
+    public static void outputTextWrongAnswer(final String answer,
+                                             final String person) {
         System.out.printf("%s is wrong answer ;(.\n Let's tyr again %s!%n\n", answer, person);
     }
 
@@ -127,7 +128,8 @@ public class Engine {
         return inputStringAnswer();
     }
 
-    public static boolean isCheckInput(final String answer, final String person) {
+    public static boolean isCheckInput(final String answer,
+                                       final String person) {
         if (isCorrectInput(answer)) {
             return false;
         } else {
@@ -136,11 +138,14 @@ public class Engine {
         }
     }
 
-    public static boolean isCheckInputAnswer(final boolean variable, final String answer) {
+    public static boolean isCheckInputAnswer(final boolean variable,
+                                             final String answer) {
         return variable && answer.equals("yes") || !variable && answer.equals("no");
     }
 
-    public static boolean isCheckStringAnswer(final boolean variable, final String answer, final String person) {
+    public static boolean isCheckStringAnswer(final boolean variable,
+                                              final String answer,
+                                              final String person) {
         if (isCheckInputAnswer(variable, answer)) {
             return false;
         }
@@ -153,7 +158,9 @@ public class Engine {
         return true;
     }
 
-    public static boolean isCheckIntegerAnswer(final int variable, final int answer, final String person) {
+    public static boolean isCheckIntegerAnswer(final int variable,
+                                               final int answer,
+                                               final String person) {
         if (variable == answer) {
             return false;
         } else {
@@ -197,7 +204,8 @@ public class Engine {
         return random.nextInt(FACTOR + 1);
     }
 
-    public static void loops(final boolean variable, final String person) {
+    public static void loops(final boolean variable,
+                             final String person) {
         for (int i = 0; i < LOOPS; i++) {
             int number = Engine.getRandomNumber();
             String answer = Engine.getStringAnswer(String.valueOf(number));
@@ -210,7 +218,9 @@ public class Engine {
         Engine.outputTextCongratulation(person);
     }
 
-    public static void loopsIntGame(final String str, final String person, final int variable) {
+    public static void loopsIntGame(final String str,
+                                    final String person,
+                                    final int variable) {
         for (int i = 0; i < LOOPS; i++) {
             int answer = getIntAnswer(str);
             if (isCheckIntegerAnswer(variable, answer, person)) {

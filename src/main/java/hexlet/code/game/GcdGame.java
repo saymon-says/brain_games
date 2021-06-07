@@ -17,7 +17,8 @@ public class GcdGame {
         return String.format("%d %d", firstNumber, secondNumber);
     }
 
-    private static int findGcd(final int a, final int b) {
+    private static int findGcd(final int a,
+                               final int b) {
         BigInteger c = BigInteger.valueOf(a);
         BigInteger d = BigInteger.valueOf(b);
         return (c.gcd(d)).intValue();

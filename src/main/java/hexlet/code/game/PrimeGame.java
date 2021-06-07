@@ -6,20 +6,13 @@ import static hexlet.code.Engine.LOOPS;
 
 public class PrimeGame {
 
-    private static final int CYCLE_IS_PRIME = 3;
-    private static final double RANGE_START = 0.1;
-
     private static boolean isPrime(final int number) {
-        if (number != 2 && number % 2 == 0) {
+
+        if (number < 2) {
             return false;
         }
 
-        if (number == 1) {
-            return false;
-        }
-
-        int limit = (int) (RANGE_START + Math.sqrt(number));
-        for (int i = CYCLE_IS_PRIME; i <= limit; i += 2) {
+        for (int i = 2; i * i < number; i++) {
             if (number % i == 0) {
                 return false;
             }
