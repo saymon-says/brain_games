@@ -6,6 +6,8 @@ import static hexlet.code.Engine.LOOPS;
 
 public class PrimeGame {
 
+    private static final int START_DIVIDER = 3;
+
     private static boolean isPrime(final int number) {
         if (number != 2 && number % 2 == 0) {
             return false;
@@ -15,7 +17,7 @@ public class PrimeGame {
             return false;
         }
 
-        for (int i = 3; i * i < number; i++) {
+        for (int i = START_DIVIDER; i * i < number; i++) {
             if (number % i == 0) {
                 return false;
             }
