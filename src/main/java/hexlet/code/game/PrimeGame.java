@@ -6,19 +6,22 @@ import static hexlet.code.Engine.LOOPS;
 
 public class PrimeGame {
 
-    private static final int START_DIVIDER = 3;
+    private static final int START_DIVIDER = 5;
 
     private static boolean isPrime(final int number) {
-        if (number != 2 && number % 2 == 0) {
-            return false;
-        }
-
         if (number < 2) {
             return false;
         }
 
-        for (int i = START_DIVIDER; i * i < number; i++) {
-            if (number % i == 0) {
+        if (number % 2 == 0) {
+            return number == 2;
+        }
+
+        if (number % 3 == 0) {
+            return number == 3;
+        }
+        for (int i = START_DIVIDER; i * i < number; i += 6) {
+            if (number % i == 0 || number % (i + 2) == 0) {
                 return false;
             }
         }
