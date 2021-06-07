@@ -1,7 +1,6 @@
 package hexlet.code;
 
 import hexlet.code.game.CalcGame;
-import hexlet.code.game.EvenGame;
 import hexlet.code.game.GcdGame;
 import hexlet.code.game.PrimeGame;
 import hexlet.code.game.ProgressionGame;
@@ -13,7 +12,7 @@ public class Engine {
 
     public static final int LOOPS = 3;
     private static final int FACTOR = 10;
-    private static String name;
+    public static String name;
 
     /*
     Output data
@@ -167,36 +166,6 @@ public class Engine {
             Engine.outputTextIncorrectInput(String.valueOf(answer), String.valueOf(variable), person);
             return true;
         }
-    }
-
-    public static void startEvenGame() {
-        outputStartInfoGame();
-        outputGameEvenRules();
-        EvenGame.evenGameLoops(name);
-    }
-
-    public static void startCalcGame() {
-        outputStartInfoGame();
-        outputGameCalcRules();
-        CalcGame.calcGameLoops(name);
-    }
-
-    public static void startGcdGame() {
-        outputStartInfoGame();
-        outputGameGcdRules();
-        GcdGame.gcdGameLoops(name);
-    }
-
-    public static void startProgressiveGame() {
-        outputStartInfoGame();
-        outputGameProgressiveRules();
-        ProgressionGame.progressionGameLoops(name);
-    }
-
-    public static void startPrimeGame() {
-        outputStartInfoGame();
-        outputGamePrimeRules();
-        PrimeGame.primeGameLoops(name);
     }
 
     public static int getRandomNumber() {

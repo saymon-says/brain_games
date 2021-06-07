@@ -2,12 +2,18 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
-import static hexlet.code.Engine.LOOPS;
+import static hexlet.code.Engine.*;
 
 public class ProgressionGame {
 
     private static int shadowTempProgressionElement;
     private static final int COUNT_STEP = 10;
+
+    public static void startProgressiveGame() {
+        outputStartInfoGame();
+        outputGameProgressiveRules();
+        ProgressionGame.progressionGameLoops(name);
+    }
 
     public static String getProgressionLane() {
         int firstNumber = Engine.getRandomNumber();

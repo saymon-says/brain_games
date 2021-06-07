@@ -2,13 +2,19 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
-import static hexlet.code.Engine.LOOPS;
+import static hexlet.code.Engine.*;
 
 public class PrimeGame {
 
     private static final int START_DIVIDER = 5;
     private static final int THIRD = 3;
     private static final int STEP_DIVIDER = 6;
+
+    public static void startPrimeGame() {
+        outputStartInfoGame();
+        outputGamePrimeRules();
+        PrimeGame.primeGameLoops(name);
+    }
 
     private static boolean isPrime(final int number) {
         if (number < 2) {

@@ -2,11 +2,17 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
-import static hexlet.code.Engine.LOOPS;
+import static hexlet.code.Engine.*;
 
 public class CalcGame {
 
     private static int resultCalc;
+
+    public static void startCalcGame() {
+        outputStartInfoGame();
+        outputGameCalcRules();
+        calcGameLoops(name);
+    }
 
     private static String calcOutput() {
         int a = Engine.getRandomNumber();

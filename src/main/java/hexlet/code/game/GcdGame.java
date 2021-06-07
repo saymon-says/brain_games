@@ -4,12 +4,18 @@ import hexlet.code.Engine;
 
 import java.math.BigInteger;
 
-import static hexlet.code.Engine.LOOPS;
+import static hexlet.code.Engine.*;
 
 public class GcdGame {
 
     private static int firstNumber;
     private static int secondNumber;
+
+    public static void startGcdGame() {
+        outputStartInfoGame();
+        outputGameGcdRules();
+        GcdGame.gcdGameLoops(name);
+    }
 
     private static String getSetDigits() {
         firstNumber = Engine.getRandomNumber();
