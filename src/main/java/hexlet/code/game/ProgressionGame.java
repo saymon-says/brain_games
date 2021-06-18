@@ -2,16 +2,18 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
+import static hexlet.code.Engine.CORRECT;
 import static hexlet.code.Engine.LOOPS;
 
 public class ProgressionGame {
 
     private static int shadowTempProgressionElement;
     private static final int COUNT_STEP = 10;
+    private static final String PROGRESSIVE_GAME_RULES = "What number is missing in the progression?\n";
 
     public static void startProgressiveGame() {
         Engine.outputStartInfoGame();
-        Engine.outputGameProgressiveRules();
+        Engine.outputTextGameMessage(PROGRESSIVE_GAME_RULES);
         ProgressionGame.progressionGameLoops(Engine.getName());
     }
 
@@ -39,11 +41,11 @@ public class ProgressionGame {
 
     public static void progressionGameLoops(final String person) {
         for (int i = 0; i < LOOPS; i++) {
-            int answer = Engine.getIntAnswer(getProgressionLane());
+            String answer = Engine.getStringAnswerAndOutMessage(getProgressionLane());
             if (Engine.isCheckIntegerAnswer(shadowTempProgressionElement, answer, person)) {
                 return;
             }
-            Engine.outputIfAnswerCorrect();
+            Engine.outputTextGameMessage(CORRECT);
         }
         Engine.outputTextCongratulation(person);
     }

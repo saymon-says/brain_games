@@ -2,6 +2,7 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
+import static hexlet.code.Engine.CORRECT;
 import static hexlet.code.Engine.LOOPS;
 
 public class PrimeGame {
@@ -9,10 +10,11 @@ public class PrimeGame {
     private static final int START_DIVIDER = 5;
     private static final int THIRD = 3;
     private static final int STEP_DIVIDER = 6;
+    private static final String PRIME_GAME_RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.\n";
 
     public static void startPrimeGame() {
         Engine.outputStartInfoGame();
-        Engine.outputGamePrimeRules();
+        Engine.outputTextGameMessage(PRIME_GAME_RULES);
         PrimeGame.primeGameLoops(Engine.getName());
     }
 
@@ -40,12 +42,12 @@ public class PrimeGame {
         for (int i = 0; i < LOOPS; i++) {
             int variable = Engine.getRandomNumber();
             boolean primeNumber = isPrime(variable);
-            String answer = Engine.getStringAnswer(String.valueOf(variable));
+            String answer = Engine.getStringAnswerAndOutMessage(String.valueOf(variable));
             if (Engine.isCheckStringAnswer(primeNumber, answer, person)
                     || Engine.isCheckInput(answer, person)) {
                 return;
             }
-            Engine.outputIfAnswerCorrect();
+            Engine.outputTextGameMessage(CORRECT);
         }
         Engine.outputTextCongratulation(person);
     }

@@ -4,16 +4,18 @@ import hexlet.code.Engine;
 
 import java.math.BigInteger;
 
+import static hexlet.code.Engine.CORRECT;
 import static hexlet.code.Engine.LOOPS;
 
 public class GcdGame {
 
     private static int firstNumber;
     private static int secondNumber;
+    private static final String GCD_GAME_RULES = "Find the greatest common divisor of given numbers.\n";
 
     public static void startGcdGame() {
         Engine.outputStartInfoGame();
-        Engine.outputGameGcdRules();
+        Engine.outputTextGameMessage(GCD_GAME_RULES);
         GcdGame.gcdGameLoops(Engine.getName());
     }
 
@@ -32,11 +34,11 @@ public class GcdGame {
 
     public static void gcdGameLoops(final String person) {
         for (int i = 0; i < LOOPS; i++) {
-            int answer = Engine.getIntAnswer(getSetDigits());
+            String answer = Engine.getStringAnswerAndOutMessage(getSetDigits());
             if (Engine.isCheckIntegerAnswer(findGcd(firstNumber, secondNumber), answer, person)) {
                 return;
             }
-            Engine.outputIfAnswerCorrect();
+            Engine.outputTextGameMessage(CORRECT);
         }
         Engine.outputTextCongratulation(person);
     }
