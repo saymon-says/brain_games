@@ -43,7 +43,7 @@ public class PrimeGame {
             int variable = Engine.getRandomNumber();
             boolean primeNumber = isPrime(variable);
             String answer = Engine.getStringAnswerAndOutMessage(String.valueOf(variable));
-            if (Engine.isCheckStringAnswer(primeNumber, answer, person)
+            if (Engine.isCheckAnswer(primeNumber, answer, person)
                     || Engine.isCheckInput(answer, person)) {
                 return;
             }

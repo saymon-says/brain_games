@@ -103,15 +103,10 @@ public class Engine {
         }
     }
 
-    public static boolean isCheckInputAnswer(final boolean variable,
-                                             final String answer) {
-        return variable && answer.equals("yes") || !variable && answer.equals("no");
-    }
-
-    public static boolean isCheckStringAnswer(final boolean variable,
-                                              final String answer,
-                                              final String person) {
-        if (isCheckInputAnswer(variable, answer)) {
+    public static boolean isCheckAnswer(final boolean variable,
+                                        final String answer,
+                                        final String person) {
+        if (variable && answer.equals("yes") || !variable && answer.equals("no")) {
             return false;
         }
         if (variable && answer.equals("no")) {

@@ -22,7 +22,7 @@ public class EvenGame {
             boolean isEvenNumber = isNumberEven(number);
             String answer = Engine.getStringAnswerAndOutMessage(String.valueOf(number));
             if (Engine.isCheckInput(answer, person)
-                    || Engine.isCheckStringAnswer(isEvenNumber, answer, person)) {
+                    || Engine.isCheckAnswer(isEvenNumber, answer, person)) {
                 return;
             }
             Engine.outputTextGameMessage(CORRECT);
