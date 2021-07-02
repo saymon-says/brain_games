@@ -19,19 +19,19 @@ public class Engine {
      */
 
     public static void outputYourChoice(final String choice) {
-        System.out.println("Your choice - " + choice + "\n");
+        System.out.printf("Your choice - %s\n", choice);
     }
 
     public static void outputTextQuestions(final String output) {
-        System.out.println("Question: " + output);
+        System.out.printf("Question: %s\n", output);
     }
 
     public static void outputTextGameMessage(final String text) {
         System.out.println(text);
     }
 
-    public static void outputTextCongratulation(final String person) {
-        System.out.println("Congratulations, " + person + "!");
+    public static void outputTextCongratulation() {
+        System.out.printf("Congratulations, %s!\n", name);
     }
 
     public static void outputNamePerson() {
@@ -41,15 +41,13 @@ public class Engine {
     }
 
     public static void outputTextIncorrectInput(final String yourInput,
-                                                final String correctInput,
-                                                final String person) {
+                                                final String correctInput) {
         System.out.printf("%s is wrong answer ;(. Correct answer was %s.\n"
-                + "Let's try again, %s!\n", yourInput, correctInput, person);
+                + "Let's try again, %s!\n", yourInput, correctInput, name);
     }
 
-    public static void outputTextWrongAnswer(final String answer,
-                                             final String person) {
-        System.out.printf("%s is wrong answer ;(.\n Let's tyr again %s!%n\n", answer, person);
+    public static void outputTextWrongAnswer(final String answer) {
+        System.out.printf("%s is wrong answer ;(.\n Let's tyr again %s!%n\n", answer, name);
     }
 
     public static void outputStartInfoGame() {
@@ -70,10 +68,6 @@ public class Engine {
     Engine Game Process
      */
 
-    public static String getName() {
-        return name;
-    }
-
     public static int getRandomNumber() {
         Random random = new Random();
         return random.nextInt(FACTOR + 1);
@@ -82,49 +76,45 @@ public class Engine {
     /*
     Game logic
      */
-
-    public static boolean isCorrectInput(final String input) {
-        return input.equals("yes") || input.equals("no");
-    }
-
     public static String getStringAnswerAndOutMessage(final String variable) {
         outputTextQuestions(variable);
         outputTextGameMessage(ANSWER);
         return inputStringAnswer();
     }
 
-    public static boolean isCheckInput(final String answer,
-                                       final String person) {
+    public static boolean isCorrectInput(final String input) {
+        return input.equals("yes") || input.equals("no");
+    }
+
+    public static boolean isCheckInputOrWriteMsg(final String answer) {
         if (isCorrectInput(answer)) {
             return false;
         } else {
-            outputTextWrongAnswer(answer, person);
+            outputTextWrongAnswer(answer);
             return true;
         }
     }
 
-    public static boolean isCheckAnswer(final boolean variable,
-                                        final String answer,
-                                        final String person) {
+    public static boolean isCheckAnswerOrWriteMsg(final boolean variable,
+                                                  final String answer) {
         if (variable && answer.equals("yes") || !variable && answer.equals("no")) {
             return false;
         }
         if (variable && answer.equals("no")) {
-            Engine.outputTextIncorrectInput(answer, "yes", person);
+            outputTextIncorrectInput(answer, "yes");
         }
         if (!variable && answer.equals("yes")) {
-            Engine.outputTextIncorrectInput(answer, "no", person);
+            outputTextIncorrectInput(answer, "no");
         }
         return true;
     }
 
-    public static boolean isCheckIntegerAnswer(final int variable,
-                                               final String answer,
-                                               final String person) {
-        if (String.valueOf(variable).equals(answer)) {
+    public static boolean checkAnswerOrWriteMsg(final String variable,
+                                                final String answer) {
+        if (variable.equals(answer)) {
             return false;
         } else {
-            Engine.outputTextIncorrectInput(String.valueOf(answer), String.valueOf(variable), person);
+            outputTextIncorrectInput(answer, variable);
             return true;
         }
     }

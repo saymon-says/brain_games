@@ -15,7 +15,7 @@ public class PrimeGame {
     public static void startPrimeGame() {
         Engine.outputStartInfoGame();
         Engine.outputTextGameMessage(PRIME_GAME_RULES);
-        PrimeGame.primeGameLoops(Engine.getName());
+        primeGameLoops();
     }
 
     private static boolean isPrime(final int number) {
@@ -38,17 +38,17 @@ public class PrimeGame {
         return true;
     }
 
-    public static void primeGameLoops(final String person) {
+    public static void primeGameLoops() {
         for (int i = 0; i < LOOPS; i++) {
             int variable = Engine.getRandomNumber();
             boolean primeNumber = isPrime(variable);
             String answer = Engine.getStringAnswerAndOutMessage(String.valueOf(variable));
-            if (Engine.isCheckAnswer(primeNumber, answer, person)
-                    || Engine.isCheckInput(answer, person)) {
+            if (Engine.isCheckAnswerOrWriteMsg(primeNumber, answer)
+                    || Engine.isCheckInputOrWriteMsg(answer)) {
                 return;
             }
             Engine.outputTextGameMessage(CORRECT);
         }
-        Engine.outputTextCongratulation(person);
+        Engine.outputTextCongratulation();
     }
 }

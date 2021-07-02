@@ -7,14 +7,14 @@ import static hexlet.code.Engine.LOOPS;
 
 public class ProgressionGame {
 
-    private static int shadowTempProgressionElement;
+    private static String shadowTempProgressionElement;
     private static final int COUNT_STEP = 10;
     private static final String PROGRESSIVE_GAME_RULES = "What number is missing in the progression?\n";
 
     public static void startProgressiveGame() {
         Engine.outputStartInfoGame();
         Engine.outputTextGameMessage(PROGRESSIVE_GAME_RULES);
-        ProgressionGame.progressionGameLoops(Engine.getName());
+        progressionGameLoops();
     }
 
     public static String getProgressionLane() {
@@ -26,7 +26,7 @@ public class ProgressionGame {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i <= COUNT_STEP; i++) {
             if (i == shadowNumber) {
-                shadowTempProgressionElement = tempProgressionElement;
+                shadowTempProgressionElement = String.valueOf(tempProgressionElement);
                 tempProgressionElement = tempProgressionElement + progressionStep;
                 sb.append("..");
                 sb.append(" ");
@@ -39,14 +39,14 @@ public class ProgressionGame {
         return sb.toString();
     }
 
-    public static void progressionGameLoops(final String person) {
+    public static void progressionGameLoops() {
         for (int i = 0; i < LOOPS; i++) {
             String answer = Engine.getStringAnswerAndOutMessage(getProgressionLane());
-            if (Engine.isCheckIntegerAnswer(shadowTempProgressionElement, answer, person)) {
+            if (Engine.checkAnswerOrWriteMsg(shadowTempProgressionElement, answer)) {
                 return;
             }
             Engine.outputTextGameMessage(CORRECT);
         }
-        Engine.outputTextCongratulation(person);
+        Engine.outputTextCongratulation();
     }
 }

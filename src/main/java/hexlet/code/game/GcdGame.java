@@ -16,7 +16,7 @@ public class GcdGame {
     public static void startGcdGame() {
         Engine.outputStartInfoGame();
         Engine.outputTextGameMessage(GCD_GAME_RULES);
-        GcdGame.gcdGameLoops(Engine.getName());
+        gcdGameLoops();
     }
 
     private static String getSetDigits() {
@@ -25,20 +25,20 @@ public class GcdGame {
         return String.format("%d %d", firstNumber, secondNumber);
     }
 
-    private static int findGcd(final int a, final int b) {
+    private static String findGcd(final int a, final int b) {
         BigInteger c = BigInteger.valueOf(a);
         BigInteger d = BigInteger.valueOf(b);
-        return (c.gcd(d)).intValue();
+        return String.valueOf((c.gcd(d)).intValue());
     }
 
-    public static void gcdGameLoops(final String person) {
+    public static void gcdGameLoops() {
         for (int i = 0; i < LOOPS; i++) {
             String answer = Engine.getStringAnswerAndOutMessage(getSetDigits());
-            if (Engine.isCheckIntegerAnswer(findGcd(firstNumber, secondNumber), answer, person)) {
+            if (Engine.checkAnswerOrWriteMsg(findGcd(firstNumber, secondNumber), answer)) {
                 return;
             }
             Engine.outputTextGameMessage(CORRECT);
         }
-        Engine.outputTextCongratulation(person);
+        Engine.outputTextCongratulation();
     }
 }

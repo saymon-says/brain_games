@@ -13,21 +13,21 @@ public class EvenGame {
     public static void startEvenGame() {
         Engine.outputStartInfoGame();
         Engine.outputTextGameMessage(EVEN_GAME_RULES);
-        evenGameLoops(Engine.getName());
+        evenGameLoops();
     }
 
-    public static void evenGameLoops(final String person) {
+    public static void evenGameLoops() {
         for (int i = 0; i < LOOPS; i++) {
             int number = Engine.getRandomNumber();
             boolean isEvenNumber = isNumberEven(number);
             String answer = Engine.getStringAnswerAndOutMessage(String.valueOf(number));
-            if (Engine.isCheckInput(answer, person)
-                    || Engine.isCheckAnswer(isEvenNumber, answer, person)) {
+            if (Engine.isCheckInputOrWriteMsg(answer)
+                    || Engine.isCheckAnswerOrWriteMsg(isEvenNumber, answer)) {
                 return;
             }
             Engine.outputTextGameMessage(CORRECT);
         }
-        Engine.outputTextCongratulation(person);
+        Engine.outputTextCongratulation();
     }
 
     private static boolean isNumberEven(final int number) {
