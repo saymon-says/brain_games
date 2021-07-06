@@ -23,7 +23,7 @@ public class EvenGame {
     private static HashMap<String, String> getArrayOfValues() {
         Map<String, String> values = new HashMap<>();
         for (int i = 0; i < LOOPS; i++) {
-            int variable = Engine.getRandomNumber();
+            int variable = Engine.getRandomNumber() * Engine.getRandomNumber();
             boolean isEvenNumber = isNumberEven(variable);
             values.put(String.valueOf(variable), getCorrectAnswer(isEvenNumber));
         }

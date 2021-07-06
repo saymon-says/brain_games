@@ -45,7 +45,7 @@ public class PrimeGame {
     private static HashMap<String, String> getArrayOfValues() {
         Map<String, String> values = new HashMap<>();
         for (int i = 0; i < LOOPS; i++) {
-            int variable = Engine.getRandomNumber();
+            int variable = Engine.getRandomNumber() * Engine.getRandomNumber();
             boolean primeNumber = isPrime(variable);
             values.put(String.valueOf(variable), getCorrectAnswer(primeNumber));
         }
