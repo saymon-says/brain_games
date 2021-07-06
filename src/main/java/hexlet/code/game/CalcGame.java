@@ -2,9 +2,10 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
-import static hexlet.code.Engine.CORRECT;
 import static hexlet.code.Engine.LOOPS;
 
 public class CalcGame {
@@ -13,9 +14,15 @@ public class CalcGame {
     private static final String CALC_GAME_RULES = "What is the result of the expression?\n";
 
     public static void startCalcGame() {
-        Engine.outputStartInfoGame();
-        Engine.outputTextGameMessage(CALC_GAME_RULES);
-        calcGameLoops();
+        Engine.gameLoops(getArrayOfValues(), CALC_GAME_RULES);
+    }
+
+    public static HashMap<String, String> getArrayOfValues() {
+        Map<String, String> values = new HashMap<>();
+        for (int i = 0; i < LOOPS; i++) {
+            values.put(calcOutput(), resultCalc);
+        }
+        return (HashMap<String, String>) values;
     }
 
     private static String calcOutput() {
@@ -31,17 +38,6 @@ public class CalcGame {
             resultCalc = String.valueOf(a * b);
         }
         return a + operation + b;
-    }
-
-    public static void calcGameLoops() {
-        for (int i = 0; i < LOOPS; i++) {
-            String answer = Engine.getStringAnswerAndOutMessage(calcOutput());
-            if (Engine.checkAnswerOrWriteMsg(resultCalc, answer)) {
-                return;
-            }
-            Engine.outputTextGameMessage(CORRECT);
-        }
-        Engine.outputTextCongratulation();
     }
 
     private static String getRandomOperation() {

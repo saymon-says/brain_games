@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -46,10 +48,6 @@ public class Engine {
                 + "Let's try again, %s!\n", yourInput, correctInput, name);
     }
 
-    public static void outputTextWrongAnswer(final String answer) {
-        System.out.printf("%s is wrong answer ;(.\n Let's tyr again %s!%n\n", answer, name);
-    }
-
     public static void outputStartInfoGame() {
         outputTextGameMessage(WELCOME);
         outputNamePerson();
@@ -76,46 +74,21 @@ public class Engine {
     /*
     Game logic
      */
-    public static String getStringAnswerAndOutMessage(final String variable) {
-        outputTextQuestions(variable);
-        outputTextGameMessage(ANSWER);
-        return inputStringAnswer();
-    }
 
-    public static boolean isCorrectInput(final String input) {
-        return input.equals("yes") || input.equals("no");
-    }
-
-    public static boolean isCheckInputOrWriteMsg(final String answer) {
-        if (isCorrectInput(answer)) {
-            return false;
-        } else {
-            outputTextWrongAnswer(answer);
-            return true;
+    public static void gameLoops(final HashMap<String, String> values, final String gameRules) {
+        outputStartInfoGame();
+        outputTextGameMessage(gameRules);
+        for (Map.Entry<String, String> gameValues : values.entrySet()) {
+            outputTextQuestions(gameValues.getKey());
+            outputTextGameMessage(ANSWER);
+            String answer = inputStringAnswer();
+            if (answer.equals(gameValues.getValue())) {
+                outputTextGameMessage(CORRECT);
+            } else {
+                outputTextIncorrectInput(answer, gameValues.getValue());
+                return;
+            }
         }
-    }
-
-    public static boolean isCheckAnswerOrWriteMsg(final boolean variable,
-                                                  final String answer) {
-        if (variable && answer.equals("yes") || !variable && answer.equals("no")) {
-            return false;
-        }
-        if (variable && answer.equals("no")) {
-            outputTextIncorrectInput(answer, "yes");
-        }
-        if (!variable && answer.equals("yes")) {
-            outputTextIncorrectInput(answer, "no");
-        }
-        return true;
-    }
-
-    public static boolean checkAnswerOrWriteMsg(final String variable,
-                                                final String answer) {
-        if (variable.equals(answer)) {
-            return false;
-        } else {
-            outputTextIncorrectInput(answer, variable);
-            return true;
-        }
+        outputTextCongratulation();
     }
 }

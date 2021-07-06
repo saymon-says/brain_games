@@ -2,7 +2,9 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
-import static hexlet.code.Engine.CORRECT;
+import java.util.HashMap;
+import java.util.Map;
+
 import static hexlet.code.Engine.LOOPS;
 
 public class ProgressionGame {
@@ -12,9 +14,7 @@ public class ProgressionGame {
     private static final String PROGRESSIVE_GAME_RULES = "What number is missing in the progression?\n";
 
     public static void startProgressiveGame() {
-        Engine.outputStartInfoGame();
-        Engine.outputTextGameMessage(PROGRESSIVE_GAME_RULES);
-        progressionGameLoops();
+        Engine.gameLoops(getArrayOfValues(), PROGRESSIVE_GAME_RULES);
     }
 
     public static String getProgressionLane() {
@@ -39,14 +39,11 @@ public class ProgressionGame {
         return sb.toString();
     }
 
-    public static void progressionGameLoops() {
+    private static HashMap<String, String> getArrayOfValues() {
+        Map<String, String> values = new HashMap<>();
         for (int i = 0; i < LOOPS; i++) {
-            String answer = Engine.getStringAnswerAndOutMessage(getProgressionLane());
-            if (Engine.checkAnswerOrWriteMsg(shadowTempProgressionElement, answer)) {
-                return;
-            }
-            Engine.outputTextGameMessage(CORRECT);
+            values.put(getProgressionLane(), shadowTempProgressionElement);
         }
-        Engine.outputTextCongratulation();
+        return (HashMap<String, String>) values;
     }
 }

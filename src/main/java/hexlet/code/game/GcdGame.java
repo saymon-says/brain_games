@@ -3,8 +3,9 @@ package hexlet.code.game;
 import hexlet.code.Engine;
 
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 
-import static hexlet.code.Engine.CORRECT;
 import static hexlet.code.Engine.LOOPS;
 
 public class GcdGame {
@@ -14,9 +15,7 @@ public class GcdGame {
     private static final String GCD_GAME_RULES = "Find the greatest common divisor of given numbers.\n";
 
     public static void startGcdGame() {
-        Engine.outputStartInfoGame();
-        Engine.outputTextGameMessage(GCD_GAME_RULES);
-        gcdGameLoops();
+        Engine.gameLoops(getArrayOfValues(), GCD_GAME_RULES);
     }
 
     private static String getSetDigits() {
@@ -31,14 +30,11 @@ public class GcdGame {
         return String.valueOf((c.gcd(d)).intValue());
     }
 
-    public static void gcdGameLoops() {
+    private static HashMap<String, String> getArrayOfValues() {
+        Map<String, String> values = new HashMap<>();
         for (int i = 0; i < LOOPS; i++) {
-            String answer = Engine.getStringAnswerAndOutMessage(getSetDigits());
-            if (Engine.checkAnswerOrWriteMsg(findGcd(firstNumber, secondNumber), answer)) {
-                return;
-            }
-            Engine.outputTextGameMessage(CORRECT);
+            values.put(getSetDigits(), findGcd(firstNumber, secondNumber));
         }
-        Engine.outputTextCongratulation();
+        return (HashMap<String, String>) values;
     }
 }

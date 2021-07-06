@@ -2,7 +2,9 @@ package hexlet.code.game;
 
 import hexlet.code.Engine;
 
-import static hexlet.code.Engine.CORRECT;
+import java.util.HashMap;
+import java.util.Map;
+
 import static hexlet.code.Engine.LOOPS;
 
 public class PrimeGame {
@@ -13,9 +15,7 @@ public class PrimeGame {
     private static final String PRIME_GAME_RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.\n";
 
     public static void startPrimeGame() {
-        Engine.outputStartInfoGame();
-        Engine.outputTextGameMessage(PRIME_GAME_RULES);
-        primeGameLoops();
+        Engine.gameLoops(getArrayOfValues(), PRIME_GAME_RULES);
     }
 
     private static boolean isPrime(final int number) {
@@ -38,17 +38,17 @@ public class PrimeGame {
         return true;
     }
 
-    public static void primeGameLoops() {
+    private static String getCorrectAnswer(final boolean primeNumber) {
+        return (primeNumber) ? "yes" : "no";
+    }
+
+    private static HashMap<String, String> getArrayOfValues() {
+        Map<String, String> values = new HashMap<>();
         for (int i = 0; i < LOOPS; i++) {
             int variable = Engine.getRandomNumber();
             boolean primeNumber = isPrime(variable);
-            String answer = Engine.getStringAnswerAndOutMessage(String.valueOf(variable));
-            if (Engine.isCheckAnswerOrWriteMsg(primeNumber, answer)
-                    || Engine.isCheckInputOrWriteMsg(answer)) {
-                return;
-            }
-            Engine.outputTextGameMessage(CORRECT);
+            values.put(String.valueOf(variable), getCorrectAnswer(primeNumber));
         }
-        Engine.outputTextCongratulation();
+        return (HashMap<String, String>) values;
     }
 }
