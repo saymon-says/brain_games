@@ -10,8 +10,5 @@ check-updates:
 lint:
 	gradlew checkstyleMain
 
-all:
-	gradlew clean install
-	gradlew checkstyleMain
-	build\install\app\bin\app
-
+build:
+	gradlew clean build
