@@ -1,6 +1,5 @@
 package hexlet.code;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
@@ -75,7 +74,7 @@ public class Engine {
     Game logic
      */
 
-    public static void gameLoops(final HashMap<String, String> values, final String gameRules) {
+    public static void gameLoops(final Map<String, String> values, final String gameRules) {
         outputStartInfoGame();
         outputTextGameMessage(gameRules);
         for (Map.Entry<String, String> gameValues : values.entrySet()) {

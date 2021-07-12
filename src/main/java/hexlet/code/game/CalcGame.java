@@ -17,12 +17,12 @@ public class CalcGame {
         Engine.gameLoops(getArrayOfValues(), CALC_GAME_RULES);
     }
 
-    public static HashMap<String, String> getArrayOfValues() {
+    public static Map<String, String> getArrayOfValues() {
         Map<String, String> values = new HashMap<>();
         for (int i = 0; i < LOOPS; i++) {
             values.put(calcOutput(), resultCalc);
         }
-        return (HashMap<String, String>) values;
+        return values;
     }
 
     private static String calcOutput() {

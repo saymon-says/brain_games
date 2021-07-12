@@ -20,14 +20,14 @@ public class EvenGame {
         return (primeNumber) ? "yes" : "no";
     }
 
-    private static HashMap<String, String> getArrayOfValues() {
+    private static Map<String, String> getArrayOfValues() {
         Map<String, String> values = new HashMap<>();
         for (int i = 0; i < LOOPS; i++) {
             int variable = Engine.getRandomNumber() * Engine.getRandomNumber();
             boolean isEvenNumber = isNumberEven(variable);
             values.put(String.valueOf(variable), getCorrectAnswer(isEvenNumber));
         }
-        return (HashMap<String, String>) values;
+        return values;
     }
 
     private static boolean isNumberEven(final int number) {
