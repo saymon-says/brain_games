@@ -7,4 +7,4 @@
 ### Project build and linter status:
 ![example workflow](https://github.com/saymon-says/java-project-lvl1/actions/workflows/gradle.yml/badge.svg)
 
-![BrainGame] (Asserts/brain-game.gif)
+![brain-game](https://user-images.githubusercontent.com/43708964/125470841-f09a7789-9db8-460f-a71c-31bab9be9f7b.gif)
