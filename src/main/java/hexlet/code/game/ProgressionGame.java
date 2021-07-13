@@ -39,11 +39,15 @@ public class ProgressionGame {
         return sb.toString();
     }
 
-    private static HashMap<String, String> getArrayOfValues() {
+    private static Map<String, String> getArrayOfValues() {
         Map<String, String> values = new HashMap<>();
-        for (int i = 0; i < LOOPS; i++) {
-            values.put(getProgressionLane(), shadowTempProgressionElement);
+        for (int i = 0; i < LOOPS;) {
+            String line = getProgressionLane();
+            if (!Engine.isCheckKey(values, line)) {
+                values.put(getProgressionLane(), shadowTempProgressionElement);
+                i++;
+            }
         }
-        return (HashMap<String, String>) values;
+        return values;
     }
 }

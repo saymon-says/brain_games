@@ -22,10 +22,13 @@ public class EvenGame {
 
     private static Map<String, String> getArrayOfValues() {
         Map<String, String> values = new HashMap<>();
-        for (int i = 0; i < LOOPS; i++) {
-            int variable = Engine.getRandomNumber() * Engine.getRandomNumber();
+        for (int i = 0; i < LOOPS;) {
+            int variable = Engine.getRandomNumber();
             boolean isEvenNumber = isNumberEven(variable);
-            values.put(String.valueOf(variable), getCorrectAnswer(isEvenNumber));
+            if (!Engine.isCheckKey(values, String.valueOf(variable))) {
+                values.put(String.valueOf(variable), getCorrectAnswer(isEvenNumber));
+                i++;
+            }
         }
         return values;
     }

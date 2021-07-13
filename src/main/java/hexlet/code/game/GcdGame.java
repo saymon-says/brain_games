@@ -30,11 +30,15 @@ public class GcdGame {
         return String.valueOf((c.gcd(d)).intValue());
     }
 
-    private static HashMap<String, String> getArrayOfValues() {
+    private static Map<String, String> getArrayOfValues() {
         Map<String, String> values = new HashMap<>();
-        for (int i = 0; i < LOOPS; i++) {
-            values.put(getSetDigits(), findGcd(firstNumber, secondNumber));
+        for (int i = 0; i < LOOPS;) {
+            String line = getSetDigits();
+            if (!Engine.isCheckKey(values, line)) {
+                values.put(line, findGcd(firstNumber, secondNumber));
+                i++;
+            }
         }
-        return (HashMap<String, String>) values;
+        return values;
     }
 }

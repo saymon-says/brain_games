@@ -74,6 +74,17 @@ public class Engine {
     Game logic
      */
 
+    public static boolean isCheckKey(final Map<String, String> values, final String key) {
+        if (values.size() != 0) {
+            for (String keysOfMap : values.keySet()) {
+                if (keysOfMap.equals(key)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public static void gameLoops(final Map<String, String> values, final String gameRules) {
         outputStartInfoGame();
         outputTextGameMessage(gameRules);

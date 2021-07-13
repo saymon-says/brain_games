@@ -44,10 +44,13 @@ public class PrimeGame {
 
     private static Map<String, String> getArrayOfValues() {
         Map<String, String> values = new HashMap<>();
-        for (int i = 0; i < LOOPS; i++) {
-            int variable = Engine.getRandomNumber() * Engine.getRandomNumber();
+        for (int i = 0; i < LOOPS;) {
+            int variable = Engine.getRandomNumber();
             boolean primeNumber = isPrime(variable);
-            values.put(String.valueOf(variable), getCorrectAnswer(primeNumber));
+            if (!Engine.isCheckKey(values, String.valueOf(variable))) {
+                values.put(String.valueOf(variable), getCorrectAnswer(primeNumber));
+                i++;
+            }
         }
         return values;
     }

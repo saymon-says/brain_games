@@ -19,8 +19,11 @@ public class CalcGame {
 
     public static Map<String, String> getArrayOfValues() {
         Map<String, String> values = new HashMap<>();
-        for (int i = 0; i < LOOPS; i++) {
-            values.put(calcOutput(), resultCalc);
+        for (int i = 0; i < LOOPS;) {
+            if (!Engine.isCheckKey((values), calcOutput())) {
+                values.put(calcOutput(), resultCalc);
+                i++;
+            }
         }
         return values;
     }
