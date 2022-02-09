@@ -1,7 +1,6 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/saymon-says/java-project-lvl1/workflows/Java_Cl/badge.svg)](https://github.com/saymon-says/java-project-lvl1/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b136b40dfe468edf8d06/maintainability)](https://codeclimate.com/github/saymon-says/java-project-lvl1/maintainability)
-![example workflow](https://github.com/saymon-says/java-project-lvl1/actions/workflows/gradle.yml/badge.svg)
 
 ### Описание
 ____
