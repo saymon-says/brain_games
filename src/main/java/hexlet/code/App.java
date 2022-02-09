@@ -7,13 +7,9 @@ import hexlet.code.game.PrimeGame;
 import hexlet.code.game.ProgressionGame;
 
 import static hexlet.code.Engine.GOOD_BYE;
-import static hexlet.code.Engine.WELCOME;
-import static hexlet.code.Engine.outputTextGameMessage;
 
 public class App {
-
     public static void main(String[] args) {
-        outputTextGameMessage(WELCOME);
         outputModeSelectionMenu();
 
         String choice = Engine.inputStringAnswer();

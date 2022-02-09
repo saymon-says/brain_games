@@ -1,5 +1,5 @@
 install:
-	gradlew clean install
+	gradlew clean build install
 
 run-dist:
 	#/Users/serdi/Hexlet/java/java-project-lvl1/build/install/app/bin/app
@@ -12,7 +12,3 @@ lint:
 
 build:
 	gradlew clean build
-
-start:
-	gradlew clean build install
-	build\install\app\bin\app
